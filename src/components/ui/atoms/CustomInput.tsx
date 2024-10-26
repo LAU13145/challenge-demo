@@ -6,10 +6,10 @@ import { useState } from 'react'
 
 const classNames = {
   label: 'text-black dark:text-black',
-  input: ['bg-transparent text-black dark:text-black placeholder:text-gray-600 dark:placeholder:text-gray-600'],
-  innerWrapper: 'bg-transparent',
+  input: ['bg-white text-black dark:text-black placeholder:text-gray-600 dark:placeholder:text-gray-600'],
+  innerWrapper: 'bg-white',
   inputWrapper: [
-    'xl:w-[460px] shadow-lg bg-default-200/50 dark:bg-default/60 backdrop-blur-xl backdrop-saturate-200 hover:bg-default-200/70 dark:hover:bg-default/70 group-data-[focus=true]:bg-default-200/50 dark:group-data-[focus=true]:bg-default/60 !cursor-text',
+    'w-[274px] md:w-[360px] xl:w-[460px] shadow-lg rounded-lg border border-gray-600 bg-white dark:bg-white backdrop-blur-xl backdrop-saturate-200 hover:bg-white dark:hover:bg-white group-data-[focus=true]:bg-white dark:group-data-[focus=true]:bg-white !cursor-text',
   ],
 }
 
@@ -23,15 +23,13 @@ export const CustomInput = () => {
       placeholder='Ingresa tu correo'
       isRequired
       labelPlacement='outside-left'
-      className='border border-gray-600 rounded-lg w-1/2 mx-auto shadow-lg'
+      className='border border-blue-200 rounded-lg shadow-lg md:w-2/3 md:mx-auto p-4 flex justify-center items-center bg-[#f1f7ff]'
       size='lg'
-      // isClearable
-      // onClear={() => console.log('input cleared')}
       startContent={<EnvelopeIcon className='h-6 w-6 text-sm text-gray-500 pointer-events-none' />}
-      // isInvalid={true}
-      // errorMessage='Please enter a valid email'
-      // value={value}
-      // onValueChange={setValue}
+      isInvalid={true}
+      errorMessage='Ingresa un correo válido'
+      value={value}
+      onValueChange={setValue}
       classNames={classNames}
     />
   )
