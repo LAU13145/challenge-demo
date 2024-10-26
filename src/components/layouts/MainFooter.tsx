@@ -4,7 +4,7 @@ import { bcscLogo } from '@/src/assets'
 
 export const MainFooter = () => {
   return (
-    <footer className='text-white sticky md:-mx-12 xl:-mx-24 bg-[#f1f7ff] border-t-[1px] border-[#e8ebee] p-4 flex flex-row justify-around items-center'>
+    <footer className='mt-14 text-white sticky md:-mx-12 xl:-mx-24 bg-[#f1f7ff] border-t-[1px] border-[#e8ebee] p-4 flex flex-row justify-around items-center'>
       <figure className='mb-2 flex justify-center p-1'>
         <Image src={bcscLogo} alt='Header Logo' height={65} width={186} />
       </figure>
