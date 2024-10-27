@@ -1,7 +1,8 @@
 'use client'
 
+import { AmountData } from '@/src/types'
 import { CustomFlowbiteTheme, Label, Select } from 'flowbite-react'
-import { ChangeEvent, SetStateAction } from 'react'
+import { SetStateAction } from 'react'
 
 const customTheme: CustomFlowbiteTheme['select'] = {
   field: {
@@ -23,9 +24,9 @@ const customTheme: CustomFlowbiteTheme['select'] = {
 }
 
 interface Props {
+  dOptions?: AmountData[]
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  dOptions?: any[]
-  dValue?: string
+  dValue?: string | any
   dHtmlFor: string
   // eslint-disable-next-line no-unused-vars
   dOnChange: SetStateAction<any>
