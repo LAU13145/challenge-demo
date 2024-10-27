@@ -1,3 +1,9 @@
+export interface AmountStateType {
+  email: string
+  password: string
+  amount: string
+}
+
 export interface DayRange {
   min?: number
   max?: number

@@ -1,1 +1,1 @@
-export * from './feeTypes'
+export * from './amountTypes'
