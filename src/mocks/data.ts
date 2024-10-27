@@ -1,4 +1,6 @@
-export const data: any = [
+import { FeeTypes } from '../types'
+
+export const data: FeeTypes = [
   {
     amountOne: {
       id: 1,

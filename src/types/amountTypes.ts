@@ -4,29 +4,20 @@ export interface AmountStateType {
   amount: string
 }
 
-export interface DayRange {
-  min?: number
-  max?: number
-  total?: number
-}
-
-export interface Feature {
-  days: DayRange
+export interface FeeFeature {
+  days: {
+    min?: number
+    max?: number
+    total?: number
+  }
   fee: number
 }
 
-export interface AmountRange {
+export interface Amount {
   id: number
   min: number
-  max: number | string // Puede ser un número o el texto 'adelante'
-  features: Feature[]
+  max: number | string // Aquí 'max' puede ser un número o la cadena 'adelante'
+  features: FeeFeature[]
 }
 
-export interface feeTypes {
-  amountOne: AmountRange
-  amountTwo: AmountRange
-  amountThree: AmountRange
-  amountFour: AmountRange
-  amountFive: AmountRange
-  amountSix: AmountRange
-}
+export type FeeTypes = Array<Record<string, Amount>>
