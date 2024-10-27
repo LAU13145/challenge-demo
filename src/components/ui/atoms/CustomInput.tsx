@@ -12,7 +12,7 @@ interface InputProps {
   value: string | (readonly string[] & string)
   placeholder: string
   regex: RegExp
-  setValue: (value: string) => void
+  setValue: ((value: string) => void) | undefined
   type: 'email' | 'text' | 'password'
 }
 

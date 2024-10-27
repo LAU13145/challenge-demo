@@ -2,16 +2,17 @@
 
 import Image from 'next/image'
 import { friendWelcome } from '../assets'
-import { useState } from 'react'
 import { regEmail, regPassword } from '../utils'
 import { BottomNavigation, CustomInput } from '../components'
-import { useRouter } from 'next/navigation'
+import { setAmount, useAppDispatch, useAppSelector } from '../redux'
+import { useAppPage } from '../hooks'
 
 export default function Home() {
-  const [email, setEmail] = useState<string>('')
-  const [password, setPassword] = useState<string>('')
+  const amount = useAppSelector((state) => state.amount)
 
-  const router = useRouter()
+  const dispatch = useAppDispatch()
+
+  const { enableButton, handleContinue } = useAppPage()
 
   return (
     <div className='flex flex-col xl:flex-row items-center gap-4 mt-20 justify-between'>
@@ -26,8 +27,8 @@ export default function Home() {
             minLength={6}
             maxLength={20}
             placeholder={'Ingresa tu correo'}
-            value={email}
-            setValue={setEmail}
+            value={amount.email}
+            setValue={(value) => dispatch(setAmount({ email: value }))}
             regex={regEmail}
             errorMessage={'Ingresa un correo válido'}
             type={'email'}
@@ -37,21 +38,14 @@ export default function Home() {
             minLength={8}
             maxLength={20}
             placeholder={'Ingresa tu contraseña'}
-            value={password}
-            setValue={setPassword}
+            value={amount.password}
+            setValue={(value) => dispatch(setAmount({ password: value }))}
             regex={regPassword}
             errorMessage={'Mínimo 8 caracteres (número, letra, caracter especial)'}
             type={'password'}
           />
 
-          <BottomNavigation
-            disableButtonContinue={false}
-            handleContinue={() => {
-              router.push('/formulario')
-            }}
-            text={'Ingresar'}
-            className={'md:h-12'}
-          />
+          <BottomNavigation disableButtonContinue={!enableButton()} handleContinue={handleContinue} text={'Ingresar'} className={'md:h-12'} />
         </section>
       </section>
     </div>

@@ -38,10 +38,9 @@ const customTheme: CustomFlowbiteTheme['button'] = {
   base: 'w-full mt-4 outline-none focus:outline-none focus:ring-0 focus:ring-transparent cursor-pointer',
   color: {
     active:
-      'bg-blue-200 border-2 border-primary hover:border-primary hover:border hover:!bg-blue-400 focus:border-secondary focus!bg-third text-greyscale500 !font-bold dark:bg-third dark:focus:ring-secondary hover:bg-secondary dark:hover:bg-secondary cursor-pointer',
-    cyan: 'bg-green_400 border border-primary font-bold dark:border-primary text-green_100 cursor-pointer dark:bg-green_400',
+      'bg-blue-300 border-2 border-primary hover:border-primary hover:border hover:!bg-blue-400 focus:border-secondary focus!bg-third text-greyscale500 !font-bold dark:bg-third dark:focus:ring-secondary hover:bg-secondary dark:hover:bg-secondary cursor-pointer',
     inactive:
-      'disabled:!bg-greyscale_300 disabled:hover:border disabled:hover:border-greyscale_200 disabled:!text-greyscale_100 disabled:font-bold disabled:opacity-100 text-sm disabled:hover:bg-greyscale_200 cursor-pointer',
+      'disabled:!bg-greyscale_200 disabled:hover:border disabled:hover:border-greyscale_100 disabled:!text-greyscale_100 disabled:font-bold disabled:opacity-100 text-sm disabled:hover:bg-greyscale_200 cursor-pointer',
   },
   inner: {
     base: 'flex items-center justify-center',
