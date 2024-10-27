@@ -5,10 +5,13 @@ import { friendWelcome } from '../assets'
 import { useState } from 'react'
 import { regEmail, regPassword } from '../utils'
 import { BottomNavigation, CustomInput } from '../components'
+import { useRouter } from 'next/navigation'
 
 export default function Home() {
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
+
+  const router = useRouter()
 
   return (
     <div className='flex flex-col xl:flex-row items-center gap-4 mt-20 justify-between'>
@@ -41,7 +44,14 @@ export default function Home() {
             type={'password'}
           />
 
-          <BottomNavigation disableButtonContinue={false} handleContinue={() => {}} text={'Ingresar'} className={'md:h-12'} />
+          <BottomNavigation
+            disableButtonContinue={false}
+            handleContinue={() => {
+              router.push('/formulario')
+            }}
+            text={'Ingresar'}
+            className={'md:h-12'}
+          />
         </section>
       </section>
     </div>

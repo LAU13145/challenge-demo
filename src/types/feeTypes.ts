@@ -10,6 +10,7 @@ export interface Feature {
 }
 
 export interface AmountRange {
+  id: number
   min: number
   max: number | string // Puede ser un número o el texto 'adelante'
   features: Feature[]
