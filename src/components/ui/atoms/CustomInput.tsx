@@ -32,35 +32,10 @@ const classNames = {
 }
 
 export const CustomInput = ({ errorMessage, className, label, icon, isInvalid, setIsInvalid, minLength, maxLength, placeholder, value, regex, setValue, type }: InputProps) => {
-  const amount = useAppSelector((state) => state.amount)
-
-  const { min, max, data } = useAppPage()
-
-  const validateRange = () => {
-    const minValue = min?.[Number(amount.period) - 1]
-    const maxValue = max?.[Number(amount.period) - 1]
-
-    return minValue !== undefined && maxValue !== undefined && Number(value) >= minValue && Number(value) <= maxValue
-  }
-
   const validateEmail = (value: string) => value.match(regex)
 
-  const validateAmount = () => {
-    if (amount.amount === '') return false
-
-    const minValue = data.map((item) => item.min)?.[Number(amount.amount) - 1]
-    const maxValue = data.map((item) => Number(item.max))?.[Number(amount.amount) - 1]
-
-    const result = Number(value) >= Number(minValue) && Number(value) <= Number(maxValue)
-    console.log({ minValue })
-    console.log({ maxValue })
-    return result
-  }
-
-  console.log({ isInvalid })
-
   const handleBlur = () => {
-    if (value !== '' || validateAmount() || validateEmail(value) || validateRange()) {
+    if (value !== '' || validateEmail(value)) {
       setIsInvalid(false)
     } else setIsInvalid(true)
   }
