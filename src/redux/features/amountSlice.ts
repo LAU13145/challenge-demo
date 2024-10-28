@@ -1,7 +1,7 @@
 import { AmountStateType } from '@/src/types'
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
-const defaultState: AmountStateType = {
+const initialState: AmountStateType = {
   email: '',
   password: '',
   amount: '',
@@ -11,20 +11,11 @@ const defaultState: AmountStateType = {
   fee: '',
 }
 
-const initialState: AmountStateType = (() => {
-  if (typeof window === 'undefined') return defaultState
-
-  const persistedState = sessionStorage.getItem('__redux__state__')
-  if (persistedState) return JSON.parse(persistedState).amount
-
-  return defaultState
-})()
-
 export const amountSlice = createSlice({
   name: 'amount',
   initialState,
   reducers: {
-    resetAmount: () => defaultState,
+    resetAmount: () => initialState,
 
     setAmount: (state, action: PayloadAction<Partial<AmountStateType>>) => {
       return {
