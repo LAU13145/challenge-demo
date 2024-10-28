@@ -9,6 +9,14 @@ Este proyecto tiene como objetivo proporcionar a los usuarios una herramienta pa
 - Tailwind CSS: Framework CSS que permite aplicar estilos de manera ágil, optimizada y con diseño responsive.
 - Redux - Redux toolkit: permite la gestión de estado para la aplicación.
 
+## Desarrollo
+
+El JSON de la data está estructurado y diseñado para manejar diferentes rangos de montos financieros, cada uno con características específicas.
+
+Para facilidad de uso y diversas funcionalidad que surgen con los valores de sus propiedades se le da un formato de arreglo que optimiza la visualización y manipulación de los datos, facilitando la creación de una interfaz de usuario intuitiva y funcional.
+
+Dicho JSON lo encuentra dentro de la carpeta Mocks.
+
 ## Como ejecutar:
 
 En la consola ingresa el siguiente comando:
