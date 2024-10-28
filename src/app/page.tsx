@@ -6,8 +6,12 @@ import { regEmail, regPassword } from '../utils'
 import { BottomNavigation, CustomInput } from '../components'
 import { setAmount, useAppDispatch, useAppSelector } from '../redux'
 import { useAppPage } from '../hooks'
+import { EnvelopeIcon, PencilSquareIcon } from '@heroicons/react/24/solid'
+import { useState } from 'react'
 
 export default function Home() {
+  const [isInvalid, setIsInvalid] = useState(false)
+
   const amount = useAppSelector((state) => state.amount)
 
   const dispatch = useAppDispatch()
@@ -24,6 +28,10 @@ export default function Home() {
 
           <CustomInput
             label={'Email'}
+            className={'p-2 flex justify-end items-center'}
+            icon={<EnvelopeIcon className='h-6 w-6 text-sm text-gray-500 pointer-events-none' />}
+            isInvalid={isInvalid}
+            setIsInvalid={setIsInvalid}
             minLength={6}
             maxLength={20}
             placeholder={'Ingresa tu correo'}
@@ -33,8 +41,13 @@ export default function Home() {
             errorMessage={'Ingresa un correo válido'}
             type={'email'}
           />
+
           <CustomInput
+            className={'p-2 flex justify-end items-center'}
             label={'Contraseña'}
+            icon={<PencilSquareIcon className='h-6 w-6 text-sm text-gray-500 pointer-events-none' />}
+            isInvalid={isInvalid}
+            setIsInvalid={setIsInvalid}
             minLength={8}
             maxLength={20}
             placeholder={'Ingresa tu contraseña'}

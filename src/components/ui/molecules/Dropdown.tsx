@@ -1,6 +1,6 @@
 'use client'
 
-import { AmountData } from '@/src/types'
+import { AmountData, FeatureType } from '@/src/types'
 import { CustomFlowbiteTheme, Label, Select } from 'flowbite-react'
 import { SetStateAction } from 'react'
 
@@ -24,7 +24,7 @@ const customTheme: CustomFlowbiteTheme['select'] = {
 }
 
 interface Props {
-  dOptions?: AmountData[]
+  dOptions?: AmountData[] | FeatureType[]
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   dValue?: string | any
   dHtmlFor: string

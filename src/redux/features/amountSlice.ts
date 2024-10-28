@@ -5,6 +5,10 @@ const defaultState: AmountStateType = {
   email: '',
   password: '',
   amount: '',
+  amountSelected: '',
+  period: '',
+  daySelected: '',
+  fee: '',
 }
 
 const initialState: AmountStateType = (() => {

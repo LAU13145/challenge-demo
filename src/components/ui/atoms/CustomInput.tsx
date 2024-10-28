@@ -1,19 +1,24 @@
 'use client'
 
-import { EnvelopeIcon } from '@heroicons/react/24/solid'
+import { useAppPage } from '@/src/hooks'
+import { useAppSelector } from '@/src/redux'
 import { Input } from '@nextui-org/react'
-import { useState } from 'react'
+import { Dispatch, ReactNode, SetStateAction } from 'react'
 
 interface InputProps {
   errorMessage: string
+  className: string
+  icon: ReactNode
   label: string
+  isInvalid: boolean
+  setIsInvalid: Dispatch<SetStateAction<boolean>>
   minLength: number
   maxLength: number
   value: string | (readonly string[] & string)
   placeholder: string
   regex: RegExp
   setValue: ((value: string) => void) | undefined
-  type: 'email' | 'text' | 'password'
+  type: 'email' | 'text' | 'password' | 'number'
 }
 
 const classNames = {
@@ -26,19 +31,43 @@ const classNames = {
   helperWrapper: 'text-red-500',
 }
 
-export const CustomInput = ({ errorMessage, label, minLength, maxLength, placeholder, value, regex, setValue, type }: InputProps) => {
-  const [isInvalid, setIsInvalid] = useState<boolean>(false)
+export const CustomInput = ({ errorMessage, className, label, icon, isInvalid, setIsInvalid, minLength, maxLength, placeholder, value, regex, setValue, type }: InputProps) => {
+  const amount = useAppSelector((state) => state.amount)
+
+  const { min, max, data } = useAppPage()
+
+  const validateRange = () => {
+    const minValue = min?.[Number(amount.period) - 1]
+    const maxValue = max?.[Number(amount.period) - 1]
+
+    return minValue !== undefined && maxValue !== undefined && Number(value) >= minValue && Number(value) <= maxValue
+  }
 
   const validateEmail = (value: string) => value.match(regex)
 
+  const validateAmount = () => {
+    if (amount.amount === '') return false
+
+    const minValue = data.map((item) => item.min)?.[Number(amount.amount) - 1]
+    const maxValue = data.map((item) => Number(item.max))?.[Number(amount.amount) - 1]
+
+    const result = Number(value) >= Number(minValue) && Number(value) <= Number(maxValue)
+    console.log({ minValue })
+    console.log({ maxValue })
+    return result
+  }
+
+  console.log({ isInvalid })
+
   const handleBlur = () => {
-    if (value === '' || !validateEmail(value)) setIsInvalid(true)
-    else setIsInvalid(false)
+    if (value !== '' || validateAmount() || validateEmail(value) || validateRange()) {
+      setIsInvalid(false)
+    } else setIsInvalid(true)
   }
 
   return (
     <Input
-      className='p-2 flex justify-end items-center'
+      className={className}
       classNames={classNames}
       color={isInvalid ? 'danger' : 'success'}
       errorMessage={errorMessage}
@@ -52,7 +81,7 @@ export const CustomInput = ({ errorMessage, label, minLength, maxLength, placeho
       onValueChange={setValue}
       placeholder={placeholder}
       size='lg'
-      startContent={<EnvelopeIcon className='h-6 w-6 text-sm text-gray-500 pointer-events-none' />}
+      startContent={icon}
       type={type}
       value={value}
     />

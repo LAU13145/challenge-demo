@@ -13,7 +13,7 @@ const FormPage = () => {
       <figure className='mt-6 flex justify-center'>
         <Image src={aboutYou} alt='Header Logo' height={120} width={120} className='md:w-40 xl:w-56' />
       </figure>
-      <h1 className='mt-4 text-greyscale500 font-bold text-center text-xl xl:text-2xl'>Ingresa los datos para simular tu CDT</h1>
+      <h1 className='my-4 text-greyscale500 font-bold text-center text-xl xl:text-2xl'>Ingresa los datos para simular tu CDT</h1>
 
       <NestedComponent />
     </div>
