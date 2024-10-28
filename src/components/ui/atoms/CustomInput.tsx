@@ -1,7 +1,5 @@
 'use client'
 
-import { useAppPage } from '@/src/hooks'
-import { useAppSelector } from '@/src/redux'
 import { Input } from '@nextui-org/react'
 import { Dispatch, ReactNode, SetStateAction } from 'react'
 

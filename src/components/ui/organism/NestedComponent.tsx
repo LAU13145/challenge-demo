@@ -42,7 +42,7 @@ export const NestedComponent = () => {
 
   return (
     <form className='rounded-2xl border border-greyscale_200 p-4'>
-      <div className='-mt-4 grid grid-cols-1 md:grid-cols-2 md:gap-x-6'>
+      <div className='-mt-4 grid grid-cols-1 xl:grid-cols-2 xl:gap-x-6'>
         <DropDown
           dOptions={data}
           dValue={selectedAmount}
@@ -59,7 +59,7 @@ export const NestedComponent = () => {
 
         {amount.amount !== '' && (
           <CustomInput
-            className={'mt-10 flex justify-end'}
+            className={'mt-10 flex justify-end md:justify-center xl:justify-end'}
             label={'Monto'}
             icon={<PencilSquareIcon className='h-6 w-6 text-sm text-gray-500 pointer-events-none' />}
             isInvalid={isInvalid}
@@ -90,7 +90,7 @@ export const NestedComponent = () => {
 
         {amount.period !== '' && (
           <CustomInput
-            className={'mt-10 flex justify-end'}
+            className={'mt-10 flex justify-end md:justify-center xl:justify-end'}
             label={'Plazo en días'}
             icon={<PencilSquareIcon className='h-6 w-6 text-sm text-gray-500 pointer-events-none' />}
             isInvalid={isInvalidDay}
